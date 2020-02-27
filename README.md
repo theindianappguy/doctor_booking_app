@@ -2,6 +2,8 @@
 
 [![Codemagic build status](https://api.codemagic.io/apps/5e57933e56d57919bfd3d36a/5e57933e56d57919bfd3d369/status_badge.svg)](https://codemagic.io/apps/5e57933e56d57919bfd3d36a/5e57933e56d57919bfd3d369/latest_build)
 
+Live Demo : http://bit.ly/2uAwmLd
+
 Youtube Video : Home Page : https://youtu.be/ilkno_gqNu0, Info Page : https://youtu.be/U-P3Qj51X2s
 
 ## Show Support
