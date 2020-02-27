@@ -11,10 +11,6 @@ Youtube Video : https://youtu.be/ilkno_gqNu0
 
 Youtube Video : https://youtu.be/U-P3Qj51X2s
 
-## Flutter Doctor App Ui Design
-
-Doctor App UI made with Flutter on Android Studio.
-
 ## Show Support
 * [Recommend Me On LinkedIn](https://www.linkedin.com/in/lamsanskar/) - I will realy Appriciate this
 * Don't forget to star ⭐ the repo 😉, it's FREE.
