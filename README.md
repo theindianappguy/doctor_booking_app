@@ -8,5 +8,5 @@
 </p>
 <p align="center">
 Show some love 💜 and Star ⭐️ the Repository to support the project.
-Try Live Demo [here](http://bit.ly/2uAwmLd)
+Try Live Demo here : http://bit.ly/2uAwmLd
 </p>
