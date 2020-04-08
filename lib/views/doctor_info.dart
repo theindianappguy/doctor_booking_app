@@ -243,8 +243,8 @@ Open till 7 Pm''',
 }
 
 class IconTile extends StatelessWidget {
-  String imgAssetPath;
-  Color backColor;
+  final String imgAssetPath;
+  final Color backColor;
 
   IconTile({this.imgAssetPath, this.backColor});
 
