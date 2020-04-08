@@ -1,4 +1,3 @@
-import 'package:doctor_booking_app/views/doctor_info.dart';
 import 'package:doctor_booking_app/views/home.dart';
 import 'package:flutter/material.dart';
 
