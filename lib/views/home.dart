@@ -127,8 +127,8 @@ class _HomePageState extends State<HomePage> {
 
 class CategorieTile extends StatefulWidget {
 
-  String categorie;
-  bool isSelected;
+  final String categorie;
+  final bool isSelected;
   _HomePageState context;
   CategorieTile({this.categorie, this.isSelected,this.context});
 
@@ -164,10 +164,10 @@ class _CategorieTileState extends State<CategorieTile> {
 
 class SpecialistTile extends StatelessWidget {
 
-  String imgAssetPath;
-  String speciality;
-  int noOfDoctors;
-  Color backColor;
+  final String imgAssetPath;
+  final String speciality;
+  final int noOfDoctors;
+  final Color backColor;
   SpecialistTile({@required this.imgAssetPath,@required this.speciality
     ,@required this.noOfDoctors, @required this.backColor});
 
