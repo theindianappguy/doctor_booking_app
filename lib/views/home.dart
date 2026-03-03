@@ -4,22 +4,21 @@ import 'package:doctor_booking_app/views/doctor_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-String? selectedCategorie = "Adults";
-
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   HomePageState createState() => HomePageState();
 }
 
 class HomePageState extends State<HomePage> {
-  List<String> categories = ["Adults", "Childrens", "Womens", "Mens"];
-
+  final List<String> categories = ["Adults", "Childrens", "Womens", "Mens"];
+  String selectedCategorie = "Adults";
   late List<SpecialityModel> specialities;
 
   @override
   void initState() {
     super.initState();
-
     specialities = getSpeciality();
   }
 
@@ -29,114 +28,109 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        systemOverlayStyle: SystemUiOverlayStyle(
-          systemNavigationBarColor: Colors.blue, // Navigation bar
-          statusBarColor: Colors.red, // Status bar
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          systemNavigationBarColor: Colors.blue,
+          statusBarColor: Colors.red,
         ),
-        iconTheme: IconThemeData(color: Colors.black87),
+        iconTheme: const IconThemeData(color: Colors.black87),
       ),
-      drawer: Drawer(child: Container() // Populate the Drawer in the next step.
-          ),
+      drawer: const Drawer(
+        child: SizedBox(),
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.white,
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Text(
                 "Find Your \nConsultation",
                 style: TextStyle(
-                    color: Colors.black87.withOpacity(0.8),
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600),
+                  color: Colors.black87.withValues(alpha: 0.8),
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-              SizedBox(
-                height: 40,
-              ),
+              const SizedBox(height: 40),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Color(0xffEFEFEF),
-                    borderRadius: BorderRadius.circular(14)),
-                child: Row(
+                  color: const Color(0xffEFEFEF),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: const Row(
                   children: <Widget>[
                     Icon(Icons.search),
-                    SizedBox(
-                      width: 10,
-                    ),
+                    SizedBox(width: 10),
                     Text(
                       "Search",
                       style: TextStyle(color: Colors.grey, fontSize: 19),
-                    )
+                    ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               Text(
                 "Categories",
                 style: TextStyle(
-                    color: Colors.black87.withOpacity(0.8),
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600),
+                  color: Colors.black87.withValues(alpha: 0.8),
+                  fontSize: 25,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
+              const SizedBox(height: 20),
               SizedBox(
-                height: 20,
-              ),
-              Container(
                 height: 30,
                 child: ListView.builder(
-                    itemCount: categories.length,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return CategorieTile(
-                        categorie: categories[index],
-                        isSelected: selectedCategorie == categories[index],
-                        context: this,
-                      );
-                    }),
+                  itemCount: categories.length,
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return CategorieTile(
+                      categorie: categories[index],
+                      isSelected: selectedCategorie == categories[index],
+                      onTap: () {
+                        setState(() {
+                          selectedCategorie = categories[index];
+                        });
+                      },
+                    );
+                  },
+                ),
               ),
+              const SizedBox(height: 20),
               SizedBox(
-                height: 20,
-              ),
-              Container(
                 height: 250,
                 child: ListView.builder(
-                    itemCount: specialities.length,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return SpecialistTile(
-                        imgAssetPath: specialities[index].imgAssetPath,
-                        speciality: specialities[index].speciality,
-                        noOfDoctors: specialities[index].noOfDoctors,
-                        backColor: specialities[index].backgroundColor,
-                      );
-                    }),
+                  itemCount: specialities.length,
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return SpecialistTile(
+                      imgAssetPath: specialities[index].imgAssetPath,
+                      speciality: specialities[index].speciality,
+                      noOfDoctors: specialities[index].noOfDoctors,
+                      backColor: specialities[index].backgroundColor,
+                    );
+                  },
+                ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Text(
-                "Doctos",
+                "Doctors",
                 style: TextStyle(
-                    color: Colors.black87.withOpacity(0.8),
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600),
+                  color: Colors.black87.withValues(alpha: 0.8),
+                  fontSize: 25,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              DoctorsTile()
+              const SizedBox(height: 20),
+              const DoctorsTile(),
             ],
           ),
         ),
@@ -145,38 +139,36 @@ class HomePageState extends State<HomePage> {
   }
 }
 
-class CategorieTile extends StatefulWidget {
-  final String? categorie;
-  final bool? isSelected;
-  final HomePageState? context;
-  CategorieTile({this.categorie, this.isSelected, this.context});
+class CategorieTile extends StatelessWidget {
+  final String categorie;
+  final bool isSelected;
+  final VoidCallback onTap;
 
-  @override
-  _CategorieTileState createState() => _CategorieTileState();
-}
+  const CategorieTile({
+    super.key,
+    required this.categorie,
+    required this.isSelected,
+    required this.onTap,
+  });
 
-class _CategorieTileState extends State<CategorieTile> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        widget.context!.setState(() {
-          selectedCategorie = widget.categorie;
-        });
-      },
+      onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        margin: EdgeInsets.only(left: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        margin: const EdgeInsets.only(left: 8),
         height: 30,
         decoration: BoxDecoration(
-            color: widget.isSelected! ? Color(0xffFFD0AA) : Colors.white,
-            borderRadius: BorderRadius.circular(30)),
+          color: isSelected ? const Color(0xffFFD0AA) : Colors.white,
+          borderRadius: BorderRadius.circular(30),
+        ),
         child: Text(
-          widget.categorie!,
+          categorie,
           style: TextStyle(
-              color:
-                  widget.isSelected! ? Color(0xffFC9535) : Color(0xffA1A1A1)),
+            color: isSelected ? const Color(0xffFC9535) : const Color(0xffA1A1A1),
+          ),
         ),
       ),
     );
@@ -184,43 +176,47 @@ class _CategorieTileState extends State<CategorieTile> {
 }
 
 class SpecialistTile extends StatelessWidget {
-  final String? imgAssetPath;
-  final String? speciality;
-  final int? noOfDoctors;
-  final Color? backColor;
-  SpecialistTile(
-      {required this.imgAssetPath,
-      required this.speciality,
-      required this.noOfDoctors,
-      required this.backColor});
+  final String imgAssetPath;
+  final String speciality;
+  final int noOfDoctors;
+  final Color backColor;
+
+  const SpecialistTile({
+    super.key,
+    required this.imgAssetPath,
+    required this.speciality,
+    required this.noOfDoctors,
+    required this.backColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 150,
-      margin: EdgeInsets.only(right: 16),
+      margin: const EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
-          color: backColor, borderRadius: BorderRadius.circular(24)),
-      padding: EdgeInsets.only(top: 16, right: 16, left: 16),
+        color: backColor,
+        borderRadius: BorderRadius.circular(24),
+      ),
+      padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            speciality!,
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            speciality,
+            style: const TextStyle(color: Colors.white, fontSize: 20),
           ),
-          SizedBox(
-            height: 6,
-          ),
+          const SizedBox(height: 6),
           Text(
             "$noOfDoctors Doctors",
-            style: TextStyle(color: Colors.white, fontSize: 13),
+            style: const TextStyle(color: Colors.white, fontSize: 13),
           ),
-          Image.asset(
-            imgAssetPath!,
-            height: 160,
-            fit: BoxFit.fitHeight,
-          )
+          Expanded(
+            child: Image.asset(
+              imgAssetPath,
+              fit: BoxFit.fitHeight,
+            ),
+          ),
         ],
       ),
     );
@@ -228,56 +224,60 @@ class SpecialistTile extends StatelessWidget {
 }
 
 class DoctorsTile extends StatelessWidget {
+  const DoctorsTile({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => DoctorsInfo()));
+          context,
+          MaterialPageRoute(builder: (context) => const DoctorsInfo()),
+        );
       },
       child: Container(
         decoration: BoxDecoration(
-            color: Color(0xffFFEEE0), borderRadius: BorderRadius.circular(20)),
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+          color: const Color(0xffFFEEE0),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
         child: Row(
           children: <Widget>[
             Image.asset(
               "assets/doctor_pic.png",
               height: 50,
             ),
-            SizedBox(
-              width: 17,
-            ),
-            Column(
+            const SizedBox(width: 17),
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   "Dr. Stefeni Albert",
                   style: TextStyle(color: Color(0xffFC9535), fontSize: 19),
                 ),
-                SizedBox(
-                  height: 2,
-                ),
+                SizedBox(height: 2),
                 Text(
-                  "Heart Speailist",
+                  "Heart Specialist",
                   style: TextStyle(fontSize: 15),
-                )
+                ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 9),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
               decoration: BoxDecoration(
-                  color: Color(0xffFBB97C),
-                  borderRadius: BorderRadius.circular(13)),
-              child: Text(
+                color: const Color(0xffFBB97C),
+                borderRadius: BorderRadius.circular(13),
+              ),
+              child: const Text(
                 "Call",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500),
+                  color: Colors.white,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 
-class SpecialityModel{
+class SpecialityModel {
+  final String imgAssetPath;
+  final String speciality;
+  final int noOfDoctors;
+  final Color backgroundColor;
 
-  String? imgAssetPath;
-  String? speciality;
-  int? noOfDoctors;
-  Color? backgroundColor;
-  SpecialityModel({this.imgAssetPath,this.speciality,this.noOfDoctors, this.backgroundColor});
+  const SpecialityModel({
+    required this.imgAssetPath,
+    required this.speciality,
+    required this.noOfDoctors,
+    required this.backgroundColor,
+  });
 }
